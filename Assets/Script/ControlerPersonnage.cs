@@ -36,8 +36,10 @@ public class ControlerPersonnage : MonoBehaviour
             vitesseX = GetComponent<Rigidbody2D>().velocity.x;  //mémorise vitesse actuelle en X
         }
 
+        print( Physics2D.OverlapCircle(transform.position, 0.5f) == true);
+
         // sauter l'objet à l'aide la touche "w"
-        if (Input.GetKeyDown("w"))
+        if (Input.GetKeyDown("w") && Physics2D.OverlapCircle(transform.position, 0.5f))
         {
             vitesseY = vitesseSaut;
             GetComponent<Animator>().SetBool("jump", true);
@@ -63,8 +65,11 @@ public class ControlerPersonnage : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D infoCollision)
     {
+        if (Physics2D.OverlapCircle(transform.position, 0.5f))
+        {
+            GetComponent<Animator>().SetBool("jump", false);
+        }
         
-        GetComponent<Animator>().SetBool("jump", false);
     }
 }
 

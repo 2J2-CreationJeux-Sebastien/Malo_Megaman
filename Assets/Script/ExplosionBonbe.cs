@@ -21,7 +21,7 @@ public class ExplosionBonbe : MonoBehaviour
     {
        print("hello");
 
-        if(infoCollision.gameObject.name =="plateforme")
+        if(infoCollision.gameObject.name =="Megaman")
         {
            // print("hello");
             GetComponent<Animator>().enabled = true;

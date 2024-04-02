@@ -500,7 +500,7 @@ MonoBehaviour:
   vitesseX: 0
   vitesseXMax: 6
   vitesseY: 0
-  vitesseSaut: 6
+  vitesseSaut: 20
 --- !u!50 &23535565
 Rigidbody2D:
   serializedVersion: 4

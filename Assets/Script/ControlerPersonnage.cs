@@ -23,11 +23,13 @@ public class ControlerPersonnage : MonoBehaviour
         if (Input.GetKey("a"))
         {
             vitesseX = -vitesseXMax;
+            GetComponent<SpriteRenderer>().flipX=true;
 
         }
         else if (Input.GetKey("d"))   //déplacement vers la droite
         {
             vitesseX = vitesseXMax;
+            GetComponent<SpriteRenderer>().flipX=false;
         }
         else
         {
@@ -38,6 +40,7 @@ public class ControlerPersonnage : MonoBehaviour
         if (Input.GetKeyDown("w"))
         {
             vitesseY = vitesseSaut;
+            GetComponent<Animator>().SetBool("jump", true);
         }
         else
         {
@@ -51,21 +54,17 @@ public class ControlerPersonnage : MonoBehaviour
         //**************************Gestion des animaitons de course et de repos********************************
         //Active l'animation de course si la vitesse de déplacement n'est pas 0, sinon le repos sera jouer par Animator
 
-        if (vitesseX > 0.1f || vitesseX < 0.1f) {
-            GetComponent<Animator>().SetBool("Sprint", true);
+        if (vitesseX > 0.1f || vitesseX < -0.1f) 
+        {
+            GetComponent<Animator>().SetBool("sprint", true);
         } else {
-            GetComponent<Animator>().SetBool("Sprint", true);
+            GetComponent<Animator>().SetBool("sprint", false);
         }
-      
-       
-       
-
-
     }
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D infoCollision)
     {
-    
-      
+        
+        GetComponent<Animator>().SetBool("jump", false);
     }
 }
 

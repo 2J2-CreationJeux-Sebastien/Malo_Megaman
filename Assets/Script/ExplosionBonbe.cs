@@ -25,7 +25,7 @@ public class ExplosionBonbe : MonoBehaviour
         {
            // print("hello");
             GetComponent<Animator>().enabled = true;
-            Destroy(gameObject, 0.1f);
+            Destroy(gameObject, 1f);
         }
     }
 }

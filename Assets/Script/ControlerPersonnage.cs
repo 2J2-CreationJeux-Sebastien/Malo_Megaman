@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /* Gestion de déplacement et du saut du personnage à l'aide des touches : a, d et w      
 * Gestion des détections de collision entre le personnage et les objets du jeu  
@@ -69,7 +70,16 @@ public class ControlerPersonnage : MonoBehaviour
         {
             GetComponent<Animator>().SetBool("jump", false);
         }
-        
+        if (infoCollision.gameObject.name == "Bombe")
+        {
+            GetComponent<Animator>().SetTrigger("death");
+            Invoke("RecomencerJeu", 2f);
+        }
+    }
+
+    void RecomencerJeu()
+    {
+        SceneManager.LoadScene(0);
     }
 }
 

@@ -18,6 +18,8 @@ public class ControlerPersonnage : MonoBehaviour
     public bool partieTerminee = false;
     public bool attaque = false;
 
+    public GameObject Abeille;
+
 
     /* Détection des touches et modification de la vitesse de déplacement;
        "a" et "d" pour avancer et reculer, "w" pour sauter
@@ -104,7 +106,9 @@ public class ControlerPersonnage : MonoBehaviour
         {
             if (attaque == true)
             {
-                Destroy(infoCollision.gameObject, 0.4f);
+                Destroy(infoCollision.gameObject, 1f);
+                infoCollision.gameObject.GetComponent<Animator>().SetTrigger("explosionAbeille");
+                infoCollision.gameObject.GetComponent<Collider2D>().enabled = false;
             }
             else 
             {

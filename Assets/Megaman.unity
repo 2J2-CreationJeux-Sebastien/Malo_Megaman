@@ -466,6 +466,7 @@ MonoBehaviour:
   vitesseSaut: 20
   partieTerminee: 0
   attaque: 0
+  Abeille: {fileID: 0}
 --- !u!50 &23535565
 Rigidbody2D:
   serializedVersion: 4
@@ -8014,7 +8015,7 @@ Transform:
   m_GameObject: {fileID: 521673249}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.87, y: -1.59, z: -0.01169733}
+  m_LocalPosition: {x: 19.26, y: -1.5, z: -0.01169733}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

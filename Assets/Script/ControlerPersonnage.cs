@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,6 +16,8 @@ public class ControlerPersonnage : MonoBehaviour
     public float vitesseY;      //vitesse verticale 
     public float vitesseSaut;   //vitesse de saut désirée
     public bool partieTerminee = false;
+    public bool attaque = false;
+
 
     /* Détection des touches et modification de la vitesse de déplacement;
        "a" et "d" pour avancer et reculer, "w" pour sauter
@@ -23,10 +26,15 @@ public class ControlerPersonnage : MonoBehaviour
     {
         if (partieTerminee == false) 
         {
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && attaque == false)
             {
-
+                attaque = true;
+                Invoke("AnnuleAttaque", 0.4f);
+                GetComponent<Animator>().SetTrigger("attaqueAnim");
+                GetComponent<Animator>().SetBool("jump", false);
             }
+
+            if (attaque == true && vitesseX <= vitesseXMax && vitesseX >= -vitesseXMax) { }
 
             // déplacement vers la gauche
             if (Input.GetKey("a"))
@@ -90,6 +98,25 @@ public class ControlerPersonnage : MonoBehaviour
             GetComponent<Animator>().SetTrigger("death");
             Invoke("RecomencerJeu", 2f);
         }
+
+        else if(infoCollision.gameObject.name == "Abeille" )
+        {
+            if (attaque == true)
+            {
+                Destroy(infoCollision.gameObject);
+            }
+            else 
+            {
+                partieTerminee = true;
+                GetComponent<Animator>().SetTrigger("death");
+                Invoke("RecomencerJeu", 2f);
+            }
+        }
+    }
+
+    public void AnnuleAttaque() 
+    { 
+        attaque = false;
     }
 
     void RecomencerJeu()

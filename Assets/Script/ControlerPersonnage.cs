@@ -23,6 +23,11 @@ public class ControlerPersonnage : MonoBehaviour
     {
         if (partieTerminee == false) 
         {
+            if (Input.GetKey(KeyCode.Space))
+            {
+
+            }
+
             // déplacement vers la gauche
             if (Input.GetKey("a"))
             {

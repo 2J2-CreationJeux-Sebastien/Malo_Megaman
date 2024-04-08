@@ -34,7 +34,10 @@ public class ControlerPersonnage : MonoBehaviour
                 GetComponent<Animator>().SetBool("jump", false);
             }
 
-            if (attaque == true && vitesseX <= vitesseXMax && vitesseX >= -vitesseXMax) { }
+            if (attaque == true && vitesseX <= vitesseXMax && vitesseX >= -vitesseXMax)
+            {
+                vitesseX *= 4;
+            }
 
             // déplacement vers la gauche
             if (Input.GetKey("a"))
@@ -52,8 +55,6 @@ public class ControlerPersonnage : MonoBehaviour
             {
                 vitesseX = GetComponent<Rigidbody2D>().velocity.x;  //mémorise vitesse actuelle en X
             }
-
-            print(Physics2D.OverlapCircle(transform.position, 0.5f) == true);
 
             // sauter l'objet à l'aide la touche "w"
             if (Input.GetKeyDown("w") && Physics2D.OverlapCircle(transform.position, 0.5f))
@@ -103,7 +104,7 @@ public class ControlerPersonnage : MonoBehaviour
         {
             if (attaque == true)
             {
-                Destroy(infoCollision.gameObject);
+                Destroy(infoCollision.gameObject, 0.4f);
             }
             else 
             {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosionBonbe : MonoBehaviour
+public class ExplosionAbeille : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -21,9 +21,8 @@ public class ExplosionBonbe : MonoBehaviour
     {
         if(infoCollision.gameObject.name =="Megaman")
         {
-           // print("hello");
-            GetComponent<Animator>().enabled = true;
-            Destroy(gameObject, 1f);
+            // print("hello");
+            GetComponent<Animator>().SetTrigger("explosionAbeille");
         }
     }
 }
